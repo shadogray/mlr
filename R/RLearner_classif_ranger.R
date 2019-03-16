@@ -20,9 +20,12 @@ makeRLearner.classif.ranger = function() {
       makeLogicalLearnerParam(id = "save.memory", default = FALSE, tunable = FALSE),
       makeLogicalLearnerParam(id = "verbose", default = TRUE, when = "both", tunable = FALSE),
       makeIntegerLearnerParam(id = "seed", when = "both", tunable = FALSE),
-      makeDiscreteLearnerParam(id = "splitrule", values = c("gini", "extratrees"), default = "gini"),
+      makeDiscreteLearnerParam(id = "splitrule", values = c("gini", "extratrees", "maxstat"), default = "gini"),
       makeIntegerLearnerParam(id = "num.random.splits", lower = 1L, default = 1L, requires = quote(splitrule == "extratrees")),
-      makeLogicalLearnerParam(id = "keep.inbag", default = FALSE, tunable = FALSE)
+      makeLogicalLearnerParam(id = "keep.inbag", default = FALSE, tunable = FALSE),
+      makeNumericLearnerParam(id = "alpha", default = 0.5, requires = quote(splitrule == "maxstat")),
+      makeNumericLearnerParam(id = "minprop", default = 0.1, requires = quote(splitrule == "maxstat")),
+      makeIntegerLearnerParam(id = "max.depth")
     ),
     par.vals = list(num.threads = 1L, verbose = FALSE, respect.unordered.factors = "order"),
     properties = c("twoclass", "multiclass", "prob", "numerics", "factors", "ordered", "featimp", "weights", "oobpreds"),
