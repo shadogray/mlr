@@ -102,7 +102,7 @@ trainLearner.WeightedClassesWrapper = function(.learner, .task, .subset = NULL, 
   td = getTaskDesc(.task)
   levs = td$class.levels
   p = .learner$wcw.param
-  if (length(levs) == 2L) {
+  if (length(levs) == 2L && length(wcw.weight) == 1L) {
     assertNumber(wcw.weight, lower = 0)
     wcw.weight = c(wcw.weight, 1)
     names(wcw.weight) = c(td$positive, td$negative)
