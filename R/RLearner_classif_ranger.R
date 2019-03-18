@@ -23,7 +23,6 @@ makeRLearner.classif.ranger = function() {
       makeDiscreteLearnerParam(id = "splitrule", values = c("gini", "extratrees", "maxstat"), default = "gini"),
       makeIntegerLearnerParam(id = "num.random.splits", lower = 1L, default = 1L, requires = quote(splitrule == "extratrees")),
       makeLogicalLearnerParam(id = "keep.inbag", default = FALSE, tunable = FALSE),
-      makeNumericVectorLearnerParam(id = "case.weights", tunable = FALSE),
       makeNumericVectorLearnerParam(id = "class.weights", tunable = FALSE),
       makeNumericLearnerParam(id = "alpha", default = 0.5, requires = quote(splitrule == "maxstat")),
       makeNumericLearnerParam(id = "minprop", default = 0.1, requires = quote(splitrule == "maxstat")),

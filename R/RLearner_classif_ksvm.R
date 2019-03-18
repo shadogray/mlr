@@ -29,7 +29,8 @@ makeRLearner.classif.ksvm = function() {
       makeLogicalLearnerParam(id = "shrinking", default = TRUE),
       makeNumericVectorLearnerParam(id = "class.weights", len = NA_integer_, lower = 0),
       makeLogicalLearnerParam(id = "fit", default = TRUE, tunable = FALSE),
-      makeIntegerLearnerParam(id = "cache", default = 40L, lower = 1L)
+      makeIntegerLearnerParam(id = "cache", default = 40L, lower = 1L),
+      makeIntegerLearnerParam(id = "cross", default = 0, tunable = TRUE)
     ),
     par.vals = list(fit = FALSE),
     properties = c("twoclass", "multiclass", "numerics", "factors", "prob", "class.weights"),

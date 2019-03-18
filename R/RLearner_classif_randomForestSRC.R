@@ -38,7 +38,8 @@ makeRLearner.classif.randomForestSRC = function() {
       makeLogicalLearnerParam(id = "do.trace", default = FALSE, tunable = FALSE, when = "both"), # is currently ignored
       makeLogicalLearnerParam(id = "membership", default = TRUE, tunable = FALSE),
       makeLogicalLearnerParam(id = "statistics", default = FALSE, tunable = FALSE),
-      makeLogicalLearnerParam(id = "tree.err", default = FALSE, tunable = FALSE)
+      makeLogicalLearnerParam(id = "tree.err", default = FALSE, tunable = FALSE),
+      makeNumericVectorLearnerParam(id = "split.wt", tunable = FALSE)
     ),
     par.vals = list(na.action = "na.impute"),
     properties = c("missings", "numerics", "factors", "ordered", "prob", "twoclass", "multiclass", "weights", "oobpreds", "featimp"),
