@@ -56,6 +56,8 @@ train = function(learner, task, subset = NULL, weights = NULL) {
   # make pars list for train call
   pars = list(.learner = learner, .task = task, .subset = NULL)
 
+  checkLearnerBeforeTrain(task, learner, weights)
+
   # FIXME: code is bad here, set weights, the simply check it in checktasklearner
   if (!is.null(weights)) {
     assertNumeric(weights, len = getTaskSize(task), any.missing = FALSE, lower = 0)
@@ -63,7 +65,6 @@ train = function(learner, task, subset = NULL, weights = NULL) {
     weights = getTaskWeights(task)
   }
 
-  checkLearnerBeforeTrain(task, learner, weights)
   pars$.weights = weights
 
   # only pass train hyper pars as basic rlearner in ...
