@@ -62,7 +62,9 @@ train = function(learner, task, subset = NULL, weights = NULL) {
   if (!is.null(weights)) {
     assertNumeric(weights, len = getTaskSize(task), any.missing = FALSE, lower = 0)
   } else {
-    weights = getTaskWeights(task)
+    if (hasLearnerProperties(learner, "weights")) {
+      weights = getTaskWeights(task)
+    }
   }
 
   pars$.weights = weights
